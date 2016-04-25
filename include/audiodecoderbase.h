@@ -3,7 +3,7 @@
  * libaudiodecoder API Header File
  * Latest version available at: http://www.oscillicious.com/libaudiodecoder
  *
- * Copyright (c) 2010-2012 Albert Santoni, Bill Good, RJ Ryan  
+ * Copyright (c) 2010-2012 Albert Santoni, Bill Good, RJ Ryan
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files
@@ -26,13 +26,13 @@
  */
 
 /*
- * The text above constitutes the entire libaudiodecoder license; however, 
+ * The text above constitutes the entire libaudiodecoder license; however,
  * the Oscillicious community also makes the following non-binding requests:
  *
  * Any person wishing to distribute modifications to the Software is
  * requested to send the modifications to the original developer so that
- * they can be incorporated into the canonical version. It is also 
- * requested that these non-binding requests be included aint with the 
+ * they can be incorporated into the canonical version. It is also
+ * requested that these non-binding requests be included aint with the
  * license above.
  */
 
@@ -50,14 +50,14 @@
 #endif
 
 //Types
-typedef float SAMPLE;
+typedef short SAMPLE;
 
 //Error codes
 #define AUDIODECODER_ERROR -1
 #define AUDIODECODER_OK     0
 
-/** 
-A word on real-time safety: 
+/**
+A word on real-time safety:
 At present, all API calls are blocking and none are considered real-time safe. For best performance,
 try to avoid calling read() or any other libaudiodecoder function from inside your audio callback.
 */
@@ -74,12 +74,12 @@ class DllExport AudioDecoderBase
         /** Seek to a sample in the file */
         int seek(int filepos) { return 0l; };
 
-        /** Read a maximum of 'size' samples of audio into buffer. 
+        /** Read a maximum of 'size' samples of audio into buffer.
             Samples are always returned as 32-bit floats, with stereo interlacing.
             Returns the number of samples read. */
         int read(int size, const SAMPLE *buffer) { return 0u; };
 
-        /** Get the number of audio samples in the file. This will be a good estimate of the 
+        /** Get the number of audio samples in the file. This will be a good estimate of the
             number of samples you can get out of read(), though you should not rely on it
             being perfectly accurate always. (eg. it might be slightly inaccurate with VBR MP3s)*/
         inline int    numSamples()        const { return m_iNumSamples; };
@@ -98,7 +98,7 @@ class DllExport AudioDecoderBase
 
         /** Get a list of the filetypes supported by the decoder, by extension */
         static std::vector<std::string> supportedFileExtensions()
-        { 
+        {
             return std::vector<std::string>();
         };
 

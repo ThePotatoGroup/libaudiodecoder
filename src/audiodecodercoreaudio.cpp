@@ -110,7 +110,7 @@ int AudioDecoderCoreAudio::open() {
     //but signed int for iOS instead.
 
     //Note iPhone/iOS only supports signed integers supposedly:
-    //outputFormat.mFormatFlags = kAudioFormatFlagIsSignedInteger;
+    outputFormat.mFormatFlags = kAudioFormatFlagIsSignedInteger;
 	
     //Debugging:
     //printf ("Source File format: "); inputFormat.Print();
